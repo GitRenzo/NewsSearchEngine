@@ -4,6 +4,7 @@ import { NewsProvider } from "./Context/NewsProvider"
 import { Container, Grid, Typography } from "@mui/material"
 // Components
 import Form from "./Components/Form"
+import NewsList from "./Components/NewsList"
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           </Grid>
         </Grid>
 
-
+        <NewsList />
       </Container>
     </NewsProvider>
   )

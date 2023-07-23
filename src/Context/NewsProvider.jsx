@@ -6,11 +6,12 @@ const NewsContext = createContext()
 const NewsProvider = ({ children }) => {
 
     const [selectedValue, setSelectedValue] = useState("general")
+    const [news, setNews] = useState([])
     useEffect(() => {
         const getApi = async () => {
-            const url = `https://newsapi.org/v2/top-headlines?country=us&category=${selectedValue}&apiKey=${import.meta.env.NEWS_API_KEY}`
-            const data = await axios(url)
-            console.log(data);
+            const url = `https://newsapi.org/v2/top-headlines?country=us&category=${selectedValue}&pageSize=100&apiKey=${import.meta.env.VITE_API_KEY}`
+            const { data } = await axios(url)
+            setNews(data.articles)
         }
         getApi()
     }, [selectedValue])
@@ -24,6 +25,7 @@ const NewsProvider = ({ children }) => {
                 selectedValue,
                 setSelectedValue,
                 handleSelectChange,
+                news,
             }}
         >
 
