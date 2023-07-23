@@ -1,10 +1,14 @@
 import { Typography, Grid } from "@mui/material"
 import useNewsEngineTool from "../Hooks/useNewsEngineTool"
+// MUI Pagination
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 // Componentes
 import NewsItem from "./NewsItem"
 
 function NewsList() {
-    const { news } = useNewsEngineTool()
+    const { news, newsNumber, handlePaginationChange, page } = useNewsEngineTool()
+    const totalPages = Math.ceil(newsNumber / 20)
     return (
         <>
             <Typography
@@ -24,6 +28,19 @@ function NewsList() {
                     />
                 ))}
             </Grid>
+            <Stack
+                spacing={2}
+                direction={"row"}
+                justifyContent="center"
+                alignItems={"center"}
+                sx={{
+                    marginY: 5
+                }}
+            >
+                <Pagination count={totalPages} color="primary" onChange={handlePaginationChange}
+                page={page}
+                />
+            </Stack>
         </>
     )
 }

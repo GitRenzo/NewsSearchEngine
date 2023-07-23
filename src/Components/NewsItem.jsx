@@ -1,7 +1,6 @@
 import { Card, CardActions, CardContent, CardMedia, Link, Typography, Grid } from "@mui/material"
 function NewsItem({ newsArticle }) {
 
-    console.log(newsArticle);
     const { urlToImage, url, title, description, source } = newsArticle
     return (
         <Grid item md={6} lg={4}>
